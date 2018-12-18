@@ -8,6 +8,8 @@ public class Avaliador {
 	private double maiorDeTodos = Double.NEGATIVE_INFINITY;
 	private double menorDeTodos = Double.POSITIVE_INFINITY;
 	private double lanceLimite = 10000;
+	private double mediaLance = 0;
+	private double somaLances = 0;
 
 	public void avalia(Leilao leilao) {
 
@@ -20,7 +22,22 @@ public class Avaliador {
 				if (lance.getValor() < menorDeTodos)
 					menorDeTodos = lance.getValor();
 			}
+			
+			setSomaLances(lance.getValor());
 		}
+		this.mediaLance = this.somaLances / leilao.getLances().size();
+	}
+	
+	public double getSomaLances() {
+		return somaLances;
+	}
+	
+	public void setSomaLances(double somaLances) {
+		this.somaLances += somaLances;
+	}
+	
+	public double getMediaLance() {
+		return mediaLance;
 	}
 
 	public double getLanceLimite() {
